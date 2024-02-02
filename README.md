@@ -30,6 +30,3 @@ Os resultados das previsões são visualizados utilizando `matplotlib`, gerando 
 ## Conclusão
 O EdgeAwareGNN representa um passo significativo na previsão de carga em redes backbone, demonstrando o potencial dos modelos GNN sensíveis a arestas. Encorajamos a comunidade a explorar, estender e aplicar este trabalho em outros contextos de redes complexas, contribuindo para o avanço das técnicas de previsão baseadas em GNN.
 
----
-
-Este texto serve como uma introdução completa e instruções para usuários e colaboradores interessados no projeto EdgeAwareGNN. Ele cobre desde a visão geral e motivação por trás do projeto até detalhes técnicos sobre a implementação e utilização dos modelos. Ao criar este wiki no GitHub, você fornece uma base sólida para que outros possam entender, utilizar e contribuir para o projeto de forma eficaz.
