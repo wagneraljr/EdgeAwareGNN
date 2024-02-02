@@ -44,6 +44,7 @@ for epoch in range(num_epochs):
         optimizer_edgeaware.step()
         scheduler_edgeaware.step()
 
+edge_aware_predictions = edge_aware_model(node_features, edge_indices, edge_features)
 edge_aware_predictions = edge_aware_predictions.detach().numpy()
 
 # Resetando a semente para o próximo modelo
@@ -70,9 +71,10 @@ for epoch in range(num_epochs - 200):
         optimizer_gcn.step()
         scheduler_gcn.step()
 
+gcn_predictions = gcn_model(node_features, edge_indices)
 gcn_predictions = gcn_predictions.detach().numpy()
 
-# Configuração e treinamento para o modelo GraphSAGE
+# Configuração e treinamento para o modelo GraphSAGE (A seed é a mesma da GCN)
 graphsage_model = GraphSAGE(node_features.size(1), 64, 1, 0.40367790734911385)
 optimizer_graphsage = torch.optim.Adam(graphsage_model.parameters(), lr=0.008176296053198579)
 scheduler_graphsage = StepLR(optimizer_graphsage, step_size=75, gamma=0.49667015759483746)
@@ -90,7 +92,8 @@ for epoch in range(num_epochs - 200):
         graphsage_loss.backward()
         optimizer_graphsage.step()
         scheduler_graphsage.step()
-
+        
+graphsage_predictions = graphsage_model(node_features, edge_indices)
 graphsage_predictions = graphsage_predictions.detach().numpy()
 
 # Preparando os dados reais para comparação
