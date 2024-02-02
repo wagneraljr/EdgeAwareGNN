@@ -45,6 +45,7 @@ for epoch in range(num_epochs):
         optimizer_edgeaware.step()
         scheduler_edgeaware.step()
 
+edge_aware_predictions = edge_aware_model(node_features, edge_indices, edge_features)
 edge_aware_predictions = edge_aware_predictions.detach().numpy()
 
 # Resetando a semente para o próximo modelo
@@ -72,6 +73,7 @@ for epoch in range(num_epochs - 200):
         optimizer_gcn.step()
         scheduler_gcn.step()
 
+gcn_predictions = gcn_model(node_features, edge_indices)
 gcn_predictions = gcn_predictions.detach().numpy()
 
 seed = 48362
@@ -79,9 +81,9 @@ torch.manual_seed(seed)
 np.random.seed(seed)
 
 # Configuração e treinamento para o modelo GraphSAGE
-graphsage_model = GraphSAGE(node_features.size(1), 64, 1, 0.40367790734911385)
-optimizer_graphsage = torch.optim.Adam(graphsage_model.parameters(), lr=0.008176296053198579)
-scheduler_graphsage = StepLR(optimizer_graphsage, step_size=75, gamma=0.49667015759483746)
+graphsage_model = GraphSAGE(node_features.size(1), 32, 1, 0.2899968355254155)
+optimizer_graphsage = torch.optim.Adam(list(graphsage_model.parameters()), lr=0.005632517545041001)
+scheduler_graphsage = StepLR(optimizer_graphsage, step_size=25, gamma=0.7348042711305643)
 graphsage_losses = []
 
 for epoch in range(num_epochs - 200):
@@ -97,6 +99,7 @@ for epoch in range(num_epochs - 200):
         optimizer_graphsage.step()
         scheduler_graphsage.step()
 
+graphsage_predictions = graphsage_model(node_features, edge_indices)
 graphsage_predictions = graphsage_predictions.detach().numpy()
 
 # Preparando os dados reais para comparação
@@ -110,10 +113,10 @@ def plot_loss_curves(losses_dict, markers):
         plt.plot(loss_values, label=model_name, marker=markers[model_name])
     plt.xlabel('Épocas')
     plt.ylabel('Perda (MSE)')
-    plt.xlim(0, 100)
+    plt.xlim(0, 60)
     plt.legend()
     plt.grid(True)
-    plt.savefig('loss_curves_week.png')
+    plt.savefig('loss_curves_day.png')
 
 # Plotando as curvas de perda
 losses_dict = {
@@ -141,7 +144,7 @@ def plot_predicted_vs_actual(predictions_dict, actual_values):
         plt.ylabel('Valores Previstos')
         plt.grid(True)
     plt.tight_layout()
-    plt.savefig('predictvsactual_week.png')
+    plt.savefig('predictvsactual_day.png')
 
 # Plotando previsões vs valores reais
 predictions_dict = {
@@ -164,7 +167,7 @@ plt.figure(figsize=(10, 5))
 plt.rc('font', size=20)
 plt.bar(['AttEdge-Aware GNN', 'GraphSAGE', 'GCN'], [edge_aware_r2, graphsage_r2, gcn_r2])
 plt.ylabel('R2')
-plt.savefig('r2_week.png')
+plt.savefig('r2_day.png')
 
 # Função auxiliar para calcular métricas MAE e RMSE
 def compute_metrics(y_true, y_pred):
@@ -194,7 +197,7 @@ def plot_metrics(metrics_dict):
 
     fig.tight_layout()
 
-    plt.savefig('metrics_week.png')
+    plt.savefig('metrics_day.png')
 
 # Calculando e plotando outras métricas (MAE e RMSE)
 metrics_dict = {
@@ -205,6 +208,6 @@ metrics_dict = {
 plot_metrics(metrics_dict)
 
 # Salvando os modelos treinados
-torch.save(edge_aware_model, 'models/edge_aware_model_week.pth')
-torch.save(gcn_model, 'models/gcn_model_week.pth')
-torch.save(graphsage_model, 'models/graphsage_model_week.pth')
+torch.save(edge_aware_model, 'models/edge_aware_model_day.pth')
+torch.save(gcn_model, 'models/gcn_model_day.pth')
+torch.save(graphsage_model, 'models/graphsage_model_day.pth')
