@@ -8,7 +8,7 @@ O projeto implementa múltiplas arquiteturas de GNN, incluindo os tradicionais G
 
 - **GCN**: Modelo inspirado nas redes neurais convolucionais aplicadas especificamente a grafos.
 - **GraphSAGE**: Um modelo robusto que utiliza convoluções de grafos para agregação de informações de vizinhança.
-- **AttEdgeAwareGCN**: Um avanço sobre o GCN tradicional, este modelo integra informações de aresta de forma eficaz, permitindo uma previsão de carga mais precisa.
+- **AttEdgeAwareGNN**: Um avanço sobre o GCN tradicional, este modelo integra informações de aresta de forma eficaz, permitindo uma previsão de carga mais precisa.
 
 ## Preparação dos Dados
 Os modelos são treinados usando dados históricos de tráfego em uma rede backbone, especificamente a rede Abilene, representada pelo arquivo `Abilene.gml`. As matrizes de tráfego foram medidas 
