@@ -1,16 +1,17 @@
 # AttEdgeAwareGNN: Previsão de Carga em Redes Backbone com GNN Sensível a Arestas
 
 ## Visão Geral
-O projeto EdgeAwareGNN introduz um modelo inovador de Rede Neural Gráfica (GNN) sensível a arestas, desenhado especificamente para a previsão de carga em redes backbone. Este projeto visa superar os desafios de previsões precisas em redes complexas, incorporando sensibilidade às arestas nas arquiteturas tradicionais de GNN. Através da comparação com modelos estabelecidos, o EdgeAwareGNN demonstra melhorias significativas na precisão das previsões.
+O projeto EdgeAwareGNN introduz um modelo inovador de Rede Neural Gráfica (GNN) sensível a arestas aplicado à a previsão de carga em redes backbone. Este projeto visa explorar atributos de arestas como forma de enriquecer as representações de nós geradas por GNNs. Através da comparação com arquiteturas tradicionais de GNNs, o AttEdgeAwareGNN demonstra melhorias significativas na precisão das previsões.
 
 ## Arquitetura dos Modelos
-O projeto implementa múltiplas arquiteturas de GNN, incluindo o tradicional GraphSAGE e o nosso modelo inovador `AttEdgeAwareGCN`, que incorpora mecanismos de atenção às arestas. O arquivo `models.py` descreve esses modelos detalhadamente:
+O projeto implementa múltiplas arquiteturas de GNN, incluindo os tradicionais GCN e GraphSAGE e o nosso modelo `AttEdgeAwareGCN`, que incorpora mecanismos de atenção às arestas. O arquivo `models.py` descreve esses modelos detalhadamente:
 
-- **GraphSAGE**: Um modelo robusto que utiliza convoluções gráficas para agregação de informações de vizinhança.
-- **AttEdgeAwareGCN**: Um avanço sobre o GCN tradicional, este modelo integra informações de aresta de forma mais eficaz, permitindo uma previsão de carga mais precisa.
+- **GCN**: Modelo inspirado nas redes neurais convolucionais aplicadas especificamente a grafos.
+- **GraphSAGE**: Um modelo robusto que utiliza convoluções de grafos para agregação de informações de vizinhança.
+- **AttEdgeAwareGCN**: Um avanço sobre o GCN tradicional, este modelo integra informações de aresta de forma eficaz, permitindo uma previsão de carga mais precisa.
 
 ## Preparação dos Dados
-Os modelos são treinados usando dados históricos de tráfego em uma rede backbone, especificamente a rede Abilene, como representado pelo arquivo `Abilene.gml`. Entretanto, as matrizes de tráfego necessárias para treinamento e teste não estão inclusas no repositório devido a restrições de espaço. Usuários interessados em replicar ou estender este trabalho devem adquirir ou simular suas próprias matrizes de tráfego.
+Os modelos são treinados usando dados históricos de tráfego em uma rede backbone, especificamente a rede Abilene, representada pelo arquivo `Abilene.gml`. As matrizes de tráfego foram medidas 
 
 ## Otimização de Hiperparâmetros
 A otimização de hiperparâmetros é realizada pelos scripts `hyper_day.py` e `hyper_week.py`, que ajustam os modelos usando dados de um dia e uma semana, respectivamente. Esses scripts empregam a biblioteca `optuna` para encontrar a configuração ideal de hiperparâmetros que maximiza a precisão das previsões. Este processo é crucial para garantir que os modelos estejam bem ajustados às características específicas dos dados de tráfego.
