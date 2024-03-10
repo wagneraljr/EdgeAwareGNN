@@ -266,4 +266,3 @@ if __name__ == "__main__":
     print(f"Testes concluídos: {len(study.trials)}")
     # Imprime os parâmetros do melhor teste
     print(f"Melhor teste: {study.best_trial.params}")
-
