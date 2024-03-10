@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from models import AttEdgeAwareGCN, GCN, GraphSAGE
-from data_utils import load_data
+from src.utils.data_utils import load_data
 import numpy as np
 import os
 import optuna

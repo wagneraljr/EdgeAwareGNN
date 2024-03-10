@@ -1,0 +1,36 @@
+{
+    "AttEdgeAware": {
+        "hidden_dim": 16,
+        "out_dim": 1,
+        "dropout": 0.2749459184344534,
+        "lr": 0.008619881892095895,
+        "gamma": 0.6430367566425178,
+        "step_size": 25,
+        "epochs": 300,
+        "seed": 2011
+    },
+
+    "GCN":
+    {
+        "hidden_dim":64,
+        "out_dim": 1,
+        "dropout":0.3989285698124243, 
+        "lr": 0.0055639430333264,
+        "gamma": 0.6767352225815311,
+        "step_size": 75,
+        "epochs": 100,
+        "seed": 99
+        
+    },
+
+    "GraphSAGE":{
+        "hidden_dim": 64,
+        "out_dim": 1,
+        "dropout": 0.40367790734911385,
+        "lr": 0.008176296053198579,
+        "gamma": 0.49667015759483746,
+        "step_size": 75,
+        "epochs": 100,
+        "seed": 99
+    }
+}
