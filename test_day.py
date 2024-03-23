@@ -88,7 +88,8 @@ graphsage_losses = []
 
 for epoch in range(num_epochs - 200):
     for traffic_matrix_filepath in traffic_matrix_files:
-        node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", traffic_matrix_filepath)
+        tm = "Measured/day/" + traffic_matrix_filepath
+        node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", tm)
         
         optimizer_graphsage.zero_grad()
         graphsage_predictions = graphsage_model(node_features, edge_indices)
