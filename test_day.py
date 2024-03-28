@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 from models import GCN, GraphSAGE, AttEdgeAwareGCN
-from data_utils import load_data
+from data_utils import load_data, get_node_loads
 import numpy as np
 import os
 from torch.optim.lr_scheduler import StepLR
