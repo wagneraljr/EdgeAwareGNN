@@ -4,7 +4,7 @@ import torch
 import csv
 
 # Função para carregar dados de um grafo e uma matriz de tráfego a partir de arquivos
-def load_data(filepath, traffic_matrix_filepath):
+def load_data(filepath):
     # Carrega o grafo da rede Abilene a partir de um arquivo GML
     G = nx.read_gml(filepath)
 
