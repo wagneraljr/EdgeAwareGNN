@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 from models import GCN, GraphSAGE, AttEdgeAwareGCN
-from data_utils import load_data
+from data_utils import load_data, get_node_loads
 import numpy as np
 import os
 from torch.optim.lr_scheduler import StepLR
@@ -14,7 +14,8 @@ torch.manual_seed(seed)
 np.random.seed(seed)
 
 # Carregamento inicial dos dados do grafo
-node_features, edge_indices, edge_features, actual_node_loads = load_data("Abilene.gml", "Data/tm.2004-09-10.16-00-00.dat")
+node_features, edge_indices, edge_features = load_data("Abilene.gml")
+actual_node_loads = get_node_loads("Data/tm.2004-09-10.16-00-00.dat")
 
 # Definindo a função de perda e o número de épocas
 loss_fn = nn.MSELoss()
@@ -33,7 +34,8 @@ traffic_matrix_files = sorted([file for file in os.listdir() if file.endswith('.
 # Loop de treinamento para o modelo AttEdgeAwareGCN
 for epoch in range(num_epochs):
     for traffic_matrix_filepath in traffic_matrix_files:
-        node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", traffic_matrix_filepath)
+        tm = "Measured/week/" + traffic_matrix_filepath
+        node_loads = get_node_loads(tm)
         
         optimizer_edgeaware.zero_grad()
         edge_aware_predictions = edge_aware_model(node_features, edge_indices, edge_features)
@@ -60,7 +62,8 @@ gcn_losses = []
 
 for epoch in range(num_epochs - 200):
     for traffic_matrix_filepath in traffic_matrix_files:
-        node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", traffic_matrix_filepath)
+        tm = "Measured/week/" + traffic_matrix_filepath
+        node_loads = get_node_loads(tm)
         
         optimizer_gcn.zero_grad()
         gcn_predictions = gcn_model(node_features, edge_indices)
@@ -82,7 +85,8 @@ graphsage_losses = []
 
 for epoch in range(num_epochs - 200):
     for traffic_matrix_filepath in traffic_matrix_files:
-        node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", traffic_matrix_filepath)
+        tm = "Measured/week/" + traffic_matrix_filepath
+        node_loads = get_node_loads(tm)
         
         optimizer_graphsage.zero_grad()
         graphsage_predictions = graphsage_model(node_features, edge_indices)
