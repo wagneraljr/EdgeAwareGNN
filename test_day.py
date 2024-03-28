@@ -14,7 +14,8 @@ torch.manual_seed(seed)
 np.random.seed(seed)
 
 # Carregamento inicial dos dados do grafo
-node_features, edge_indices, edge_features, actual_node_loads = load_data("Abilene.gml", "Data/tm.2004-09-10.16-00-00.dat")
+node_features, edge_indices, edge_features = load_data("Abilene.gml")
+actual_node_loads = get_node_loads("Data/tm.2004-09-10.16-00-00.dat")
 
 # Definindo a função de perda e o número de épocas
 loss_fn = nn.MSELoss()
@@ -34,7 +35,7 @@ traffic_matrix_files = sorted([file for file in os.listdir("./Measured/day") if 
 for epoch in range(num_epochs):
     for traffic_matrix_filepath in traffic_matrix_files:
         tm = "Measured/day/" + traffic_matrix_filepath
-        node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", tm)
+        node_loads = get_node_loads(tm)
                 
         optimizer_edgeaware.zero_grad()
         edge_aware_predictions = edge_aware_model(node_features, edge_indices, edge_features)
@@ -62,7 +63,7 @@ gcn_losses = []
 for epoch in range(num_epochs - 200):
     for traffic_matrix_filepath in traffic_matrix_files:
         tm = "Measured/day/" + traffic_matrix_filepath
-        node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", tm)
+        node_loads = get_node_loads(tm)
         
         optimizer_gcn.zero_grad()
         gcn_predictions = gcn_model(node_features, edge_indices)
@@ -89,7 +90,7 @@ graphsage_losses = []
 for epoch in range(num_epochs - 200):
     for traffic_matrix_filepath in traffic_matrix_files:
         tm = "Measured/day/" + traffic_matrix_filepath
-        node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", tm)
+        node_loads = get_node_loads(tm)
         
         optimizer_graphsage.zero_grad()
         graphsage_predictions = graphsage_model(node_features, edge_indices)
