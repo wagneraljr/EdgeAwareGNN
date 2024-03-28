@@ -50,7 +50,10 @@ def load_data(filepath, traffic_matrix_filepath):
     
     # Converte características das arestas para um tensor
     edge_features = torch.tensor(edge_features, dtype=torch.float32)
+     
+    return node_features, edge_indices, edge_features
 
+def get_node_loads(traffic_matrix_filepath):    
     # Processa o arquivo para extrair os valores da matriz de tráfego
     traffic_matrix = []
     with open(traffic_matrix_filepath, "r") as file:
@@ -74,5 +77,5 @@ def load_data(filepath, traffic_matrix_filepath):
     normalized_node_loads = [load / total_load for load in node_loads_values] 
     
     node_loads = torch.tensor(normalized_node_loads, dtype=torch.float32).view(-1, 1)
-       
-    return node_features, edge_indices, edge_features, node_loads
+    
+    return node_loads
