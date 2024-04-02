@@ -7,7 +7,7 @@ from src.models.gcn import GCN
 from src.models.graph_sage import GraphSAGE
 from src.models.edge_aware_gnn.att_edge_aware_gnn import  AttEdgeAwareGCN
 from src.models.att_edge_aware_gnn_v2 import AttEdgeAwareGNNV2
-from src.utils.data_utils import load_data
+from src.utils.data_utils import DataUtils
 import numpy as np
 import os
 from torch.optim.lr_scheduler import StepLR
@@ -73,11 +73,12 @@ class TrainUtil:
                     scheduler: torch.optim.Optimizer,):
         traffic_matrix_files = sorted([file for file in os.listdir(path_traffic_matrix_files) if file.endswith(extension_files)])
         losses = []
+        node_features, edge_indices, edge_features = DataUtils.load_data(gml_file)
         for epoch in range(epochs):
             print(f"Progress:  {epoch/epochs:.2f}%",end="\r")
             for tm_file in traffic_matrix_files:
                 tm = path_traffic_matrix_files + tm_file
-                node_features, edge_indices, edge_features, node_loads = load_data(gml_file, tm)
+                node_loads = DataUtils.get_node_loads(tm)
                 loss = TrainUtil.train_model( model,optimizer, loss_fn,
                     scheduler, node_features, edge_indices, 
                     edge_features,node_loads, )

@@ -7,7 +7,7 @@ from src.models.gcn import GCN
 from src.models.graph_sage import GraphSAGE
 from src.models.edge_aware_gnn.att_edge_aware_gnn import  AttEdgeAwareGCN
 from src.models.att_edge_aware_gnn_v2 import AttEdgeAwareGNNV2
-from src.utils.data_utils import load_data
+from src.utils.data_utils import DataUtils
 import numpy as np
 from torch.optim.lr_scheduler import StepLR
 from src.utils.train_util import TrainUtil
@@ -26,7 +26,7 @@ def train(model_name,period):
     gml_file = KPaths.path_data+"abilene/Abilene.gml"
     tm_test = KPaths.path_data + "abilene/target/test/tm.2004-09-10.16-00-00.dat"
     
-    node_features, edge_indices, edge_features, actual_node_loads = load_data(gml_file, tm_test)
+    node_features, edge_indices, edge_features = DataUtils.load_data(gml_file)
     model = TrainUtil.create_model_by_model_name(model_name,node_features.size(1),edge_features.size(1),hidden_dim,out_dim,dropout)
     optim = torch.optim.Adam(list(model.parameters()), lr=lr)
     scheduler = StepLR(optim, step_size=step_size, gamma=gamma)
@@ -36,7 +36,6 @@ def train(model_name,period):
     losses = TrainUtil.train_by_path_traffic_matrix(gml_file, path_traffic_matrix_files_train,'.dat',
                                                          model,optim,epochs,loss_fn,scheduler)
     
-    node_features, edge_indices, edge_features, actual_node_loads = load_data(gml_file, tm_test)
     prediction = TrainUtil.predict_by_model(model,node_features, edge_indices, edge_features)
     results = {
         'losses': [tensor.item() for tensor in losses],

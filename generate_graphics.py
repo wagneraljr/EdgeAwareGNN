@@ -6,7 +6,7 @@ import sys
 from colorama import Fore, Style
 from src.constants.k_paths import KPaths
 from src.utils.calculations_util import CalculationsUtil
-from src.utils.data_utils import load_data
+from src.utils.data_utils import DataUtils
 from src.utils.plot_utils import PlotUtils
 
 def generate_graphics(period):
@@ -32,7 +32,8 @@ def generate_graphics(period):
 
     gml_file = KPaths.path_data + "abilene/Abilene.gml"
     tm_test = KPaths.path_data + "abilene/target/test/tm.2004-09-10.16-00-00.dat"
-    node_features, edge_indices, edge_features, actual_node_loads = load_data(gml_file, tm_test)
+    node_features, edge_indices, edge_features = DataUtils.load_data(gml_file)
+    actual_node_loads  = DataUtils.get_node_loads(tm_test)
 
     actual_node_loads = actual_node_loads.detach().numpy()
     model_names = []
