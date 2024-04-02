@@ -10,7 +10,7 @@ Os modelos são treinados usando dados históricos de tráfego em uma rede backb
 ### Arquitetura dos Modelos
 O projeto utiliza múltiplas arquiteturas de GNN, incluindo os tradicionais [GCN](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.models.GCN.html) e [GraphSAGE](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.models.GraphSAGE.html), e implementa o nosso novo modelo AttEdgeAwareGNN.
 
-Informações detalhadas acerca do modelo AttEdgeAwareGNN serão  posteriormente detalhadas, após revisão do artigo.
+Informações acerca do modelo AttEdgeAwareGNN serão  posteriormente detalhadas, após revisão do artigo.
 ## Requisitos
 * python3
 * pip
@@ -30,7 +30,7 @@ A estrutura do projeto pode ser compreendida da seguinte forma:
 * **train_results:** Contém informações do treinamento dos modelos, como as *losses* e a predição dos dados de teste após treinamento.
 
 ## Reprodutibilidade
-Para prever as cargas dos nós da rede abilene, os modelos foram treinados em dois cenários: um onde os dados de treinamento contém informações da carga da rede durante um dia, e outro durante uma semana. Para que fosse possível a reprodução dos resultados obtidos uma *seed* foi salva para cada modelo em cada cenário. Posteriomente, instruções de uso de *scripts* prontos para reprodução do artigo serão abordadas.
+Para prever as cargas dos nós da rede abilene, os modelos foram treinados em dois cenários: um onde os dados de treinamento contém informações da carga da rede durante um dia, e outro durante uma semana. Para que fosse possível a reprodução dos resultados obtidos, uma *seed* foi salva para cada modelo em cada cenário. Posteriomente, instruções de uso de *scripts* prontos para reprodução do artigo serão abordadas.
 
 ### Fluxo de Treinamento e Avaliação dos Modelos
 O treinamento e avaliação dos modelos consiste das seguintes etapas:
@@ -39,7 +39,7 @@ O treinamento e avaliação dos modelos consiste das seguintes etapas:
 2. Configuração manual dos hiperparâmetros obtidos em um arquivo *json* (podem ser exploradas na pasta `hyperparameters_config`).
 3. Criação e treinamento dos modelos a partir dos hiperparâmetros obtidos.
     
-    a. Ao final do treinamento as *losses* e predições obtidas no arquivo de teste são exportadas para um arquivo *json* em `train_results`.
+    a. Ao final do treinamento, as *losses* e predições obtidas no arquivo de teste são exportadas para um arquivo *json* em `train_results`.
 4. Avaliação dos modelos com base nas métricas métricas MAE (Erro Médio Absoluto), MSE (Erro Quadrático Médio) e R²  (Coeficiente de Determinação) a partir dos dados salvos em `train_results`, além da geração de gráficos com os resultados das avaliações e treinamento dos modelos para simples comparação.
 
 Este fluxo é repetido para cada cenário.
