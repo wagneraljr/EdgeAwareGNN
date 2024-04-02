@@ -56,7 +56,7 @@ def generate_graphics(period):
     r2s = PlotUtils.plot_multi_r2(actual_node_loads,list(predictions_dict.values()),model_names,KPaths.path_graphics+'r2/',
                             f'r2_{period}.png')
     for i,r2 in enumerate(r2s):
-        print(f"{model_names[i]} R2: {r2s[i]:.2f}")
+        print(f"{model_names[i]} R2: {r2:.2f}")
         
     PlotUtils.plot_metrics(metrics_dict, KPaths.path_graphics + 'metrics/',f'metrics_{period}.png')
 
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     args = sys.argv
     period = args[1]
     print()
-    print(f"Generating graphics - Type: {period}")
+    print(f"Generating graphics - Task: Abilene-{period}")
     generate_graphics(period)
     print(Fore.GREEN + 'Completed\n' + Style.RESET_ALL)
     print()

@@ -9,7 +9,6 @@ class PlotUtils:
         labels = list(metrics_dict.keys())
         mae_scores = [metrics['MAE'] for metrics in metrics_dict.values()]
         rmse_scores = [metrics['RMSE'] for metrics in metrics_dict.values()]
-        
         x = np.arange(len(labels))  # Localização das etiquetas
         width = 0.3  # Largura das barras
         
