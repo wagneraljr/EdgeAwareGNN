@@ -68,7 +68,7 @@ Nossa ferramenta permite a inclusão de modelos de GNNs personalizados para trei
 1. Crie o seu modelo.
 2. Otimize os hiperparâmetros do seu modelo importando-o nos *scripts* `hyper_day.py` e/ou `hyper_week.py` e criando novas funções objetivo. As funções presentes nestes arquivos podem ser usadas como base, atentando-se apenas à inicialização e loop de treino do modelo especificado.
 3. Configure os hiperparâmetros do seu modelo na pasta **hyperparameters_config**.
-4. Acrescente o nome do seu modelo em `enums/enum_name_model.py`.
+4. Acrescente o nome do seu modelo em `src/enums/enum_name_model.py`.
 5. Acrescente o seu modelo nas funções `create_model_by_model_name` e `predict_by_model` em `src/utils/train_util.py`.
 6. Acrescente o nome do seu modelo (o mesmo em `enum_name_model.py`) na váriavel *MODELS* em `run_experiments.sh`.
     
