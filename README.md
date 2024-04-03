@@ -63,4 +63,13 @@ A otimização de hiperparâmetros é realizada pelos scripts `hyper_day.py` e `
 
 ## Uso de modelos personalizados
 
-Nossa ferramenta permite a inclusão de modelos de GNNs personalizados para testes. O modelo deverá ser incluído como *script .py* em 'src/models'.
+Nossa ferramenta permite a inclusão de modelos de GNNs personalizados para testes seguindo estes passos: 
+
+* O modelo deverá ser incluído como *script .py* em `src/models`.
+* Para otimização de hiperparâmetros, os modelos devem ser importados pelos arquivos `hyper_day.py` e/ou `hyper_week.py` e novas funções objetivo devem ser criadas. As funções atuais podem ser usadas como base, atentando-se apenas à inicialização e loop de treino do modelo esspecificado.
+* Para demais testes, os hiperparâmetros devem ser definidos em **hyperparameters_config** e o modelo importado no arquivo `train.py`.
+
+O uso de diferentes matrizes de tráfego também é possível:
+
+* Para diferentes períodos de tempo do conjunto de dados do Abilene, basta substituir os arquivos `.dat` pelos arquivos do período desejado.
+* Para matrizes de tráfego de outras fontes, é preciso alterar as funções em `src/utils/data_utils.py` para ler e tratar os dados da matriz de acordo com a necessidade.
