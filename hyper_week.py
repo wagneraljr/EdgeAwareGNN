@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from models import AttEdgeAwareGCN, GCN, GraphSAGE
-from src.utils.data_utils import load_data
+from src.utils.data_utils import load_data, get_node_loads
 import numpy as np
 import os
 import optuna
@@ -17,8 +17,8 @@ def objective_gcn(trial):
 
         # Carrega o grafo da rede Abilene a partir do arquivo .gml  
         # e a matriz de tráfego com os valores de carga reais
-        node_features, edge_indices, edge_features, \
-            actual_node_loads = load_data("Abilene.gml", "Data/tm.2004-09-10.16-00-00.dat")
+        node_features, edge_indices, edge_features = load_data("Abilene.gml")
+        actual_node_loads = get_node_loads("Data/tm.2004-09-10.16-00-00.dat")
             
         # Hyperparâmetros
         hidden_dim = trial.suggest_categorical('hidden_dim', [16, 32, 64, 128])
@@ -44,8 +44,8 @@ def objective_gcn(trial):
         # Loop de treino
         for epoch in range(num_epochs):  
             for traffic_matrix_filepath in traffic_matrix_files:
-                
-                node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", traffic_matrix_filepath)
+                tm = "Measured/week/" + traffic_matrix_filepath
+                node_loads = get_node_loads(tm)
                              
                 # Zera gradientes
                 optimizer.zero_grad()
@@ -97,8 +97,8 @@ def objective_gsage(trial):
 
         # Carrega o grafo da rede Abilene a partir do arquivo .gml  
         # e a matriz de tráfego com os valores de carga reais
-        node_features, edge_indices, edge_features, \
-            actual_node_loads = load_data("Abilene.gml", "Data/tm.2004-09-10.16-00-00.dat")
+        node_features, edge_indices, edge_features = load_data("Abilene.gml")
+        actual_node_loads = get_node_loads("Data/tm.2004-09-10.16-00-00.dat")
             
         # Hyperparâmetros
         hidden_dim = trial.suggest_categorical('hidden_dim', [16, 32, 64, 128])
@@ -124,8 +124,8 @@ def objective_gsage(trial):
         # Loop de treino
         for epoch in range(num_epochs):  
             for traffic_matrix_filepath in traffic_matrix_files:
-                
-                node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", traffic_matrix_filepath)
+                tm = "Measured/week/" + traffic_matrix_filepath
+                node_loads = get_node_loads(tm)
                              
                 # Zera gradientes
                 optimizer.zero_grad()
@@ -176,8 +176,8 @@ def objective_eagnn(trial):
 
         # Carrega o grafo da rede Abilene a partir do arquivo .gml  
         # e a matriz de tráfego com os valores de carga reais
-        node_features, edge_indices, edge_features, \
-            actual_node_loads = load_data("Abilene.gml", "Data/tm.2004-09-10.16-00-00.dat")
+        node_features, edge_indices, edge_features = load_data("Abilene.gml")
+        actual_node_loads = get_node_loads("Data/tm.2004-09-10.16-00-00.dat")
             
         # Hyperparâmetros
         hidden_dim = trial.suggest_categorical('hidden_dim', [16, 32, 64, 128])
@@ -203,8 +203,8 @@ def objective_eagnn(trial):
         # Loop de treino
         for epoch in range(num_epochs):  
             for traffic_matrix_filepath in traffic_matrix_files:
-                
-                node_features, edge_indices, edge_features, node_loads = load_data("Abilene.gml", traffic_matrix_filepath)
+                tm = "Measured/week/" + traffic_matrix_filepath
+                node_loads = get_node_loads(tm))
                              
                 # Zera gradientes
                 optimizer.zero_grad()
