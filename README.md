@@ -65,7 +65,7 @@ A otimização de hiperparâmetros é realizada pelos scripts `hyper_day.py` e `
 ### Treine, Avalie e Compare o seu Próprio Modelo
 
 Nossa ferramenta permite a inclusão de modelos de GNNs personalizados para treinamento e teste na rede abilene seguindo estes passos:
-1. Crie o seu modelo.
+1. Crie o seu modelo em `src/models/`.
 2. Otimize os hiperparâmetros do seu modelo importando-o nos *scripts* `hyper_day.py` e/ou `hyper_week.py` e criando novas funções objetivo. As funções presentes nestes arquivos podem ser usadas como base, atentando-se apenas à inicialização e loop de treino do modelo especificado.
 3. Configure os hiperparâmetros do seu modelo na pasta **hyperparameters_config**.
 4. Acrescente o nome do seu modelo em `src/enums/enum_name_model.py`.
