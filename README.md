@@ -62,13 +62,21 @@ chmod +x run_experiments.sh
 A otimização de hiperparâmetros é realizada pelos scripts `hyper_day.py` e `hyper_week.py`, que ajustam os modelos usando dados de um dia e uma semana anteriores à data alvo da previsão, respectivamente. Esses scripts empregam a biblioteca `optuna` para encontrar a configuração ideal de hiperparâmetros que maximiza a precisão das previsões. Este processo é crucial para garantir que os modelos estejam bem ajustados às características específicas dos dados de tráfego.
 
 ## Personalização da Ferramenta
+### Treine, Avalie e Compare o seu Próprio Modelo
 
-Nossa ferramenta permite a inclusão de modelos de GNNs personalizados para testes seguindo estes passos: 
+Nossa ferramenta permite a inclusão de modelos de GNNs personalizados para treinamento e teste na rede abilene seguindo estes passos:
+1. Crie o seu modelo.
+2. Otimize os hiperparâmetros do seu modelo importando-o nos *scripts* `hyper_day.py` e/ou `hyper_week.py` e criando novas funções objetivo. As funções presentes nestes arquivos podem ser usadas como base, atentando-se apenas à inicialização e loop de treino do modelo especificado.
+3. Configure os hiperparâmetros do seu modelo na pasta **hyperparameters_config**.
+4. Acrescente o nome do seu modelo em `enums/enum_name_model.py`.
+5. Acrescente o seu modelo nas funções `create_model_by_model_name` e `predict_by_model` em `src/utils/train_util.py`.
+6. Acrescente o nome do seu modelo (o mesmo em `enum_name_model.py`) na váriavel *MODELS* em `run_experiments.sh`.
+    
+    a. Aqui você pode controlar não só quais modelos serão treinados e avaliados quanto para qual cenário (*day* ou *week*). Se não quiser que um modelo seja executado basta comentá-lo. O mesmo vale para os cenários.
 
-* O modelo deverá ser incluído como *script .py* em `src/models`.
-* Para otimização de hiperparâmetros, os modelos devem ser importados pelos arquivos `hyper_day.py` e/ou `hyper_week.py` e novas funções objetivo devem ser criadas. As funções atuais podem ser usadas como base, atentando-se apenas à inicialização e loop de treino do modelo esspecificado.
-* Para demais testes, os hiperparâmetros devem ser definidos em **hyperparameters_config** e o modelo importado no arquivo `train.py`.
+Nos passos de 2 a 6 podem ser utilizados os próprios *scripts* referenciados como uma base de exemplo. 
 
+### Mudança na Matriz de Tráfego
 O uso de diferentes matrizes de tráfego também é possível:
 
 * Para diferentes períodos de tempo do conjunto de dados do Abilene, basta substituir os arquivos `.dat` pelos arquivos do período desejado.
