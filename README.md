@@ -61,3 +61,6 @@ chmod +x run_experiments.sh
 
 A otimização de hiperparâmetros é realizada pelos scripts `hyper_day.py` e `hyper_week.py`, que ajustam os modelos usando dados de um dia e uma semana anteriores à data alvo da previsão, respectivamente. Esses scripts empregam a biblioteca `optuna` para encontrar a configuração ideal de hiperparâmetros que maximiza a precisão das previsões. Este processo é crucial para garantir que os modelos estejam bem ajustados às características específicas dos dados de tráfego.
 
+## Uso de modelos personalizados
+
+Nossa ferramenta permite a inclusão de modelos de GNNs personalizados para testes. O modelo deverá ser incluído como *script .py* em 'src/models'.
