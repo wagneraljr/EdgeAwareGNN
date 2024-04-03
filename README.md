@@ -30,7 +30,7 @@ A estrutura do projeto pode ser compreendida da seguinte forma:
 * **train_results:** Contém informações do treinamento dos modelos, como as *losses* e a predição dos dados de teste após treinamento.
 
 ## Reprodutibilidade
-Para prever as cargas dos nós da rede abilene, os modelos foram treinados em dois cenários: um onde os dados de treinamento contém informações da carga da rede durante um dia, e outro durante uma semana. Para que fosse possível a reprodução dos resultados obtidos, uma *seed* foi salva para cada modelo em cada cenário. Posteriomente, instruções de uso de *scripts* prontos para reprodução do artigo serão abordadas.
+Para prever as cargas dos nós da rede abilene, os modelos foram treinados em dois cenários: um onde os dados de treinamento contém informações da carga da rede durante um dia, e outro durante uma semana. Para que fosse possível a reprodução dos resultados obtidos, uma *seed* foi salva para cada modelo em cada cenário. Posteriormente, instruções de uso de *scripts* prontos para reprodução do artigo serão abordadas.
 
 ### Fluxo de Treinamento e Avaliação dos Modelos
 O treinamento e avaliação dos modelos consiste das seguintes etapas:
@@ -52,7 +52,7 @@ Para executar o shell *script* certifique-se que ele tenha permissão para execu
 ./run_experiments.sh
 ```
 
-Caso este arquivo não tenha permissão para execução, execute o comando abaixo e logo após o comando anterior:
+Caso este arquivo não tenha permissão para execução, execute o comando abaixo, e logo após, o comando anterior.
 ```
 chmod +x run_experiments.sh
 ```
