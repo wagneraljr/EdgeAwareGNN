@@ -17,7 +17,6 @@ train_data_list = [load_traffic_pd(os.path.join(extract_folder, f)) for f in tra
 train_data = pd.concat(train_data_list, ignore_index=True).sum(axis=1)  # Somar colunas para obter um total por intervalo
 
 # Definir e ajustar o modelo SARIMA
-# Observação: (1, 1, 1) são os parâmetros não sazonais; (1, 1, 1, 12) são os parâmetros sazonais com 12 como período sazonal
 sarima_model = SARIMAX(train_data, order=(1, 1, 1), seasonal_order=(1, 1, 1, 48))
 sarima_result = sarima_model.fit()
 
