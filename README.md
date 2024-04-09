@@ -21,6 +21,7 @@ pip install -r requirements.txt
 ```
 ## Estrutura do Projeto
 A estrutura do projeto pode ser compreendida da seguinte forma:
+* **benchmarks:** Scripts para previsão de carga usando diversos métodos tradicionais para comparação.
 * **checkpoints:** Contém os modelos salvos após treinamento em arquivos *.pth*.
 * **datasets:** Mantém os conjuntos de dados utilizados no projeto.
 * **graphics:** Responsável por manter os gráficos gerados após etapa de avaliação para comparação dos modelos.
