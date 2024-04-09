@@ -22,10 +22,10 @@ arima_result = arima_model.fit()
 
 # Carregar dados de teste (arquivo de destino)
 test_data_path = 'Data/tm.2004-09-10.16-00-00.dat'
-test_data = load_traffic_pd(test_data_path).sum(axis=1)
+y_true = load_traffic_pd(test_data_path).sum(axis=1)
 
 # Fazer previsões
-forecast = arima_result.forecast(steps=len(test_data))
+y_pred = arima_result.forecast(steps=len(y_true))
 
 # Calcular o RMSE
 rmse = np.sqrt(mean_squared_error(y_true, y_pred))
