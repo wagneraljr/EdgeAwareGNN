@@ -2,10 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.nn import SAGEConv, GraphConv
-
 from src.models.edge_aware_gnn.edge_attention import EdgeAttention
-
-
 
 # Classe que define um modelo GCN ciente dos atributos das arestas com mecanismo de atenção
 class AttEdgeAwareGCN(nn.Module):
