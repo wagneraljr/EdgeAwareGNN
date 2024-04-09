@@ -12,7 +12,7 @@ extract_folder = 'Measured/day'
 extracted_files = os.listdir(extract_folder)
 
 # Carregar dados de treinamento
-train_files = [f for f in extracted_files if '.dat' in f]  # Exemplo: filtrar por uma data específica
+train_files = [f for f in extracted_files if '.dat' in f]
 train_data_list = [load_traffic_pd(os.path.join(extract_folder, f)) for f in train_files]
 
 # Concatenar todos os DataFrames de treinamento em uma única série temporal
