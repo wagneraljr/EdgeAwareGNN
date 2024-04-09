@@ -2,6 +2,7 @@ import networkx as nx
 import numpy as np
 import torch
 import csv
+import pandas as pd
 
 # Função para carregar dados de um grafo e uma matriz de tráfego a partir de arquivos
 def load_data(filepath):
@@ -79,3 +80,13 @@ def get_node_loads(traffic_matrix_filepath):
     node_loads = torch.tensor(normalized_node_loads, dtype=torch.float32).view(-1, 1)
     
     return node_loads
+
+# Função para carregar dados de um arquivo .dat em formado pandas, ignorando cabeçalhos e linhas de comentário
+def load_traffic_pd(file_path):
+    # Ignorar linhas de comentário e carregar apenas os dados numéricos
+    data = pd.read_csv(file_path, comment='#', header=None)
+    # Remover valores inconsistentes
+    data = data.iloc[1:, 1:]
+    # Converter dados para um DataFrame numérico
+    numeric_data = data.apply(pd.to_numeric, errors='coerce', axis=1)
+    return numeric_data
