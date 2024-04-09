@@ -1,3 +1,4 @@
+import os
 import torch
 import torch.nn as nn
 from torch.optim import Adam
@@ -5,7 +6,6 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 # Função para carregar e preparar os dados
 def load_prepare_data(file_path):
@@ -59,6 +59,12 @@ class LSTMModel(nn.Module):
 # Carregar dados, normalizar e preparar para treinamento
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+# Caminho para a pasta onde os dados foram extraídos
+extract_folder = 'Measured/day/'
+extracted_files = os.listdir(extract_folder)
+
+train_files = [f for f in extracted_files if '.dat' in f]
+
 train_data = np.vstack([load_prepare_data(f'Measured/day/{f}') for f in train_files])
 y_true = load_prepare_data('Data/tm.2004-09-10.16-00-00.dat')
 
@@ -80,7 +86,7 @@ optimizer = Adam(model.parameters(), lr=0.01)
 criterion = nn.MSELoss()
 
 # Treinamento do modelo
-num_epochs = 50
+num_epochs = 25
 for epoch in range(num_epochs):
     model.train()
     optimizer.zero_grad()
