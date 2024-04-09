@@ -1,19 +1,13 @@
 import json
 import torch
 import torch.nn as nn
-import matplotlib.pyplot as plt
 from src.enums.enum_name_models import EnumNameModel
 from src.models.gcn import GCN
 from src.models.graph_sage import GraphSAGE
 from src.models.edge_aware_gnn.att_edge_aware_gnn import  AttEdgeAwareGCN
 from src.models.att_edge_aware_gnn_v2 import AttEdgeAwareGNNV2
 from src.utils.data_utils import DataUtils
-import numpy as np
 import os
-from torch.optim.lr_scheduler import StepLR
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-
-
 
 class TrainUtil:
     @staticmethod
