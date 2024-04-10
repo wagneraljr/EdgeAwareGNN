@@ -20,7 +20,7 @@ Os arquivos de medições de tráfego podem ser baixados do seguinte [link](http
 
 <figure>
     <img src="3-target.png" width="45%">
-    <figcaption>YDia alvo</figcaption>
+    <figcaption>Dia alvo</figcaption>
 </figure>
 
 <p float="left">
