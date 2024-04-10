@@ -20,6 +20,7 @@ Os arquivos de medições de tráfego podem ser baixados do seguinte [link](http
 
 <p float="left">
   <img src="1-day.png" width="30%" />
+  <div class="caption">Caption here</div>
   <img src="2-week.png" width="30%" /> 
   <img src="3-target.png" width="30%" />
 </p>
