@@ -30,9 +30,9 @@ Os arquivos de medições de tráfego podem ser baixados do seguinte [link](http
   </div>
 </div>
 
-<img src="https://github.com/wagneraljr/EdgeAwareGNN/blob/main/1-day.png" width="600" height="300">
-<img src="https://github.com/wagneraljr/EdgeAwareGNN/blob/main/2-week.png" width="600" height="300">
-<img src="https://github.com/wagneraljr/EdgeAwareGNN/blob/main/3-target.png" width="600" height="300">
+<img src="1-day.png" width="600" height="300">
+<img src="2-week.png" width="600" height="300">
+<img src="3-target.png" width="600" height="300">
 
 
 ## Otimização de Hiperparâmetros
