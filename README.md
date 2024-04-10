@@ -33,9 +33,6 @@ Estas métricas ajudam a quantificar o quão próximo as previsões estão dos v
 ## Visualização dos Resultados
 Os resultados das previsões são visualizados utilizando `matplotlib`, gerando gráficos que comparam as cargas previstas com as reais. Esta visualização facilita a identificação de discrepâncias e destaca a precisão das previsões do modelo. Exemplos de tais gráficos podem ser gerados pelos scripts de teste e são fundamentais para a análise de desempenho.
 
-## Conclusão
-O EdgeAwareGNN representa um passo significativo na previsão de carga em redes backbone, demonstrando o potencial dos modelos GNN sensíveis a arestas. Encorajamos a comunidade a explorar, estender e aplicar este trabalho em outros contextos de redes complexas, contribuindo para o avanço das técnicas de previsão baseadas em GNN.
-
 ## Personalização da Ferramenta
 ### Treine, Avalie e Compare o seu Próprio Modelo
 
@@ -50,4 +47,5 @@ O uso de diferentes matrizes de tráfego também é possível:
 * Para diferentes períodos de tempo do conjunto de dados do Abilene, basta substituir os arquivos `.dat` pelos arquivos do período desejado.
 * Para matrizes de tráfego de outras fontes, é preciso alterar as funções em `src/utils/data_utils.py` para ler e tratar os dados da matriz de acordo com a necessidade.
 
-
+## Conclusão
+O EdgeAwareGNN representa um passo significativo na previsão de carga em redes backbone, demonstrando o potencial dos modelos GNN sensíveis a arestas. Encorajamos a comunidade a explorar, estender e aplicar este trabalho em outros contextos de redes complexas, contribuindo para o avanço das técnicas de previsão baseadas em GNN.
