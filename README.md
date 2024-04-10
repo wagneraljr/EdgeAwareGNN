@@ -30,23 +30,6 @@ Após a otimização, os scripts `test_day.py` e `test_week.py` avaliam o desemp
 
 Estas métricas ajudam a quantificar o quão próximo as previsões estão dos valores reais, proporcionando uma medida clara da eficácia do modelo. Também por simplicidade, os arquivos de testes foram replicados para cada cenário.
 
-Avaliamos dois cenários de treinamento. No primeiro, os dados de tráfego das 24 horas do dia anterior ao alvo da predição foram usados para treino. No segundo cenário, os dados de tráfego de 24 horas de uma semana antes foram usados. Em geral, os resultados de testes com dados do primeiro cenário foram melhores. As figuras à seguir mostram os padrões de tráfego do dia alvo e dos dois cenários. É possível perceber que o padrão de tráfego no cenário 1 se assemelha mais ao dia previsto, o que justifica os resultados.
-
-<figure>
-    <img src="3-target.png" width="45%">
-    <figcaption>Dia alvo</figcaption>
-</figure>
-
-<figure>
-    <img src="1-day.png" width="45%">
-    <figcaption>Cenário 1</figcaption>
-</figure>
-
-<figure>
-    <img src="2-week.png" width="45%">
-    <figcaption>Cenário 2</figcaption>
-</figure>
-
 ## Visualização dos Resultados
 Os resultados das previsões são visualizados utilizando `matplotlib`, gerando gráficos que comparam as cargas previstas com as reais. Esta visualização facilita a identificação de discrepâncias e destaca a precisão das previsões do modelo. Exemplos de tais gráficos podem ser gerados pelos scripts de teste e são fundamentais para a análise de desempenho.
 
