@@ -1,5 +1,9 @@
 # AttEdgeAwareGNN: Previsão de Carga em Redes Backbone com GNN Sensível a Arestas
 
+## Nova versão
+
+Uma versão mais atual dessa ferramenta pode ser encontrada [aqui](https://github.com/wagneraljr/EdgeAwareGNN/tree/new_model).
+
 ## Visão Geral
 O projeto EdgeAwareGNN introduz um modelo inovador de Rede Neural Gráfica (GNN) sensível a arestas aplicado à a previsão de carga em redes backbone. Este projeto visa explorar atributos de arestas como forma de enriquecer as representações de nós geradas por GNNs. Através da comparação com arquiteturas tradicionais de GNNs, o AttEdgeAwareGNN demonstra melhorias significativas na precisão das previsões.
 
