@@ -21,6 +21,8 @@ Os arquivos de medições de tráfego podem ser baixados do seguinte [link](http
 
 
 <img src="https://github.com/wagneraljr/EdgeAwareGNN/blob/main/1-day.png" width="400" height="200">
+<img src="https://github.com/wagneraljr/EdgeAwareGNN/blob/main/2-week.png" width="400" height="200">
+<img src="https://github.com/wagneraljr/EdgeAwareGNN/blob/main/3-targe.png" width="400" height="200">
 
 
 ## Otimização de Hiperparâmetros
