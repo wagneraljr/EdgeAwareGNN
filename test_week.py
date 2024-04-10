@@ -29,7 +29,7 @@ scheduler_edgeaware = StepLR(optimizer_edgeaware, step_size=25, gamma=0.64303675
 edge_aware_losses = []  # Para armazenar as perdas ao longo do treinamento
 
 # Obtendo lista de arquivos de matrizes de tráfego
-traffic_matrix_files = sorted([file for file in os.listdir() if file.endswith('.dat')])
+traffic_matrix_files = sorted([file for file in os.listdir("./Measured/week") if file.endswith('.dat')])
 
 # Loop de treinamento para o modelo AttEdgeAwareGCN
 for epoch in range(num_epochs):
