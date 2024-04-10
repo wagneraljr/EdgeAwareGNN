@@ -77,6 +77,11 @@ for epoch in range(num_epochs - 200):
 gcn_predictions = gcn_model(node_features, edge_indices)
 gcn_predictions = gcn_predictions.detach().numpy()
 
+# Resetando a semente para o próximo modelo
+seed = 99
+torch.manual_seed(seed)
+np.random.seed(seed)
+
 # Configuração e treinamento para o modelo GraphSAGE (A seed é a mesma da GCN)
 graphsage_model = GraphSAGE(node_features.size(1), 64, 1, 0.40367790734911385)
 optimizer_graphsage = torch.optim.Adam(graphsage_model.parameters(), lr=0.008176296053198579)
