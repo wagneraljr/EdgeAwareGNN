@@ -20,13 +20,13 @@ Os arquivos de medições de tráfego podem ser baixados do seguinte [link](http
 
 <div class="row">
   <div class="column">
-    <img src="1-day.png" alt="Snow" style="width:30%">
+    <img src="1-day.png" alt="Snow" style="width:50%">
   </div>
   <div class="column">
-    <img src="2-week.png" alt="Forest" style="width:30%">
+    <img src="2-week.png" alt="Forest" style="width:50%">
   </div>
   <div class="column">
-    <img src="3-target.png" alt="Mountains" style="width:30%">
+    <img src="3-target.png" alt="Mountains" style="width:50%">
   </div>
 </div>
 
