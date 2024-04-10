@@ -23,6 +23,11 @@ Os arquivos de medições de tráfego podem ser baixados do seguinte [link](http
     <figcaption>Dia alvo</figcaption>
 </figure>
 
+<figure>
+    <img src="1-day.png" width="45%">
+    <figcaption>Cenário 1</figcaption>
+</figure>
+
 <p float="left">
   <img src="3-target.png" width="30%" />
   <div class="caption">Dia alvo</div>
