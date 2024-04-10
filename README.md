@@ -19,10 +19,12 @@ Os modelos são treinados usando dados históricos de tráfego em uma rede backb
 Os arquivos de medições de tráfego podem ser baixados do seguinte [link](https://drive.google.com/drive/folders/1pi9vbm8zQUiEFZu8P2irCPTp1__uY80B?usp=drive_link).
 
 <p float="left">
-  <img src="1-day.png" width="30%" />
-  <div class="caption">Caption here</div>
-  <img src="2-week.png" width="30%" /> 
   <img src="3-target.png" width="30%" />
+  <div class="caption">Dia alvo</div>
+  <img src="1-day.png" width="30%" />
+  <div class="caption">Cenário 1</div>
+  <img src="2-week.png" width="30%" />
+  <div class="caption">Cenário 2</div>
 </p>
 
 ## Otimização de Hiperparâmetros
