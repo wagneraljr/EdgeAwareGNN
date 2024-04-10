@@ -31,6 +31,12 @@ Os arquivos de medições de tráfego podem ser baixados do seguinte [link](http
   </div>
 </div>
 </html>
+
+<p float="left">
+  <img src="1-day.png" width="100" />
+  <img src="2-week.png" width="100" /> 
+  <img src="3-target.png" width="100" />
+</p>
 <img src="1-day.png" width="600" height="300">
 <img src="2-week.png" width="600" height="300">
 <img src="3-target.png" width="600" height="300">
