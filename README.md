@@ -32,3 +32,18 @@ Os resultados das previsões são visualizados utilizando `matplotlib`, gerando 
 ## Conclusão
 O EdgeAwareGNN representa um passo significativo na previsão de carga em redes backbone, demonstrando o potencial dos modelos GNN sensíveis a arestas. Encorajamos a comunidade a explorar, estender e aplicar este trabalho em outros contextos de redes complexas, contribuindo para o avanço das técnicas de previsão baseadas em GNN.
 
+## Personalização da Ferramenta
+### Treine, Avalie e Compare o seu Próprio Modelo
+
+Nossa ferramenta permite a inclusão de modelos de GNNs personalizados para treinamento e teste na rede abilene seguindo estes passos:
+1. Inclua o código do seu modelo no arquivo `models.py`.
+2. Otimize os hiperparâmetros do seu modelo importando-o nos *scripts* `hyper_day.py` e/ou `hyper_week.py` e criando novas funções objetivo. As funções presentes nestes arquivos podem ser usadas como base, atentando-se apenas à inicialização e loop de treino do modelo especificado.
+3. Inicialize, configure os hiperparâmetros do seu modelo e crie o loop de treinamento conforme os exemplos nos arquivos `test_day.py` e/ou `test_week.py`.
+
+### Mudança na Matriz de Tráfego
+O uso de diferentes matrizes de tráfego também é possível:
+
+* Para diferentes períodos de tempo do conjunto de dados do Abilene, basta substituir os arquivos `.dat` pelos arquivos do período desejado.
+* Para matrizes de tráfego de outras fontes, é preciso alterar as funções em `src/utils/data_utils.py` para ler e tratar os dados da matriz de acordo com a necessidade.
+
+
