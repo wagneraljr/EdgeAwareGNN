@@ -18,6 +18,11 @@ O projeto implementa múltiplas arquiteturas de GNN, incluindo os tradicionais G
 Os modelos são treinados usando dados históricos de tráfego em uma rede backbone, especificamente a rede Abilene, representada pelo arquivo `Abilene.gml`. Criada em 1999 e encerrada em 2007, a rede Abilene era composta por 11 nós e 14 links. O conjunto de dados usado neste trabalho contém seis meses de dados de tráfego entre os nós da rede Abilene, medidos a cada cinco minutos. Os dados são dispostos em matrizes de tráfego NxN, onde N é o número de nós da rede. Uma vez que o objetivo deste trabalho é estimar a carga nos nós, o tráfego de entrada e saída de cada nó na matriz de tráfego foi somado e normalizado. A estrutura da rede contém arestas com oito atributos cada, representados por valores reais. Além disso, o modelo foi enriquecido com o cálculo de atributos implícitos das arestas: centralidade de intermediação, grau das arestas e coeficiente de agrupamento das arestas. 
 Os arquivos de medições de tráfego podem ser baixados do seguinte [link](https://drive.google.com/drive/folders/1pi9vbm8zQUiEFZu8P2irCPTp1__uY80B?usp=drive_link).
 
+<figure>
+    <img src="3-target.png" width="45%">
+    <figcaption>YDia alvo</figcaption>
+</figure>
+
 <p float="left">
   <img src="3-target.png" width="30%" />
   <div class="caption">Dia alvo</div>
