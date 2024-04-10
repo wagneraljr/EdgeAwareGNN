@@ -8,6 +8,7 @@ from torch.optim.lr_scheduler import StepLR
 from src.utils.train_util import TrainUtil
 import json
 from colorama import Fore, Style
+from generate_graphics import generate_graphics
 
 def train(model_name,period):
     hidden_dim, out_dim,dropout, lr,gamma, step_size, epochs, seed = TrainUtil.get_hyperparameters_by_json_file(
@@ -49,3 +50,4 @@ if __name__ == "__main__":
         for model_name in models:
             train(model_name, period)
             print(Fore.GREEN + 'Completed\n' + Style.RESET_ALL)
+        generate_graphics(period)
