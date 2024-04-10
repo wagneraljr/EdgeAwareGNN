@@ -18,25 +18,6 @@ O projeto implementa múltiplas arquiteturas de GNN, incluindo os tradicionais G
 Os modelos são treinados usando dados históricos de tráfego em uma rede backbone, especificamente a rede Abilene, representada pelo arquivo `Abilene.gml`. Criada em 1999 e encerrada em 2007, a rede Abilene era composta por 11 nós e 14 links. O conjunto de dados usado neste trabalho contém seis meses de dados de tráfego entre os nós da rede Abilene, medidos a cada cinco minutos. Os dados são dispostos em matrizes de tráfego NxN, onde N é o número de nós da rede. Uma vez que o objetivo deste trabalho é estimar a carga nos nós, o tráfego de entrada e saída de cada nó na matriz de tráfego foi somado e normalizado. A estrutura da rede contém arestas com oito atributos cada, representados por valores reais. Além disso, o modelo foi enriquecido com o cálculo de atributos implícitos das arestas: centralidade de intermediação, grau das arestas e coeficiente de agrupamento das arestas. 
 Os arquivos de medições de tráfego podem ser baixados do seguinte [link](https://drive.google.com/drive/folders/1pi9vbm8zQUiEFZu8P2irCPTp1__uY80B?usp=drive_link).
 
-<figure>
-    <img src="3-target.png" width="45%">
-    <figcaption>Dia alvo</figcaption>
-</figure>
-
-<figure>
-    <img src="1-day.png" width="45%">
-    <figcaption>Cenário 1</figcaption>
-</figure>
-
-<p float="left">
-  <img src="3-target.png" width="30%" />
-  <div class="caption">Dia alvo</div>
-  <img src="1-day.png" width="30%" />
-  <div class="caption">Cenário 1</div>
-  <img src="2-week.png" width="30%" />
-  <div class="caption">Cenário 2</div>
-</p>
-
 ## Otimização de Hiperparâmetros
 A otimização de hiperparâmetros é realizada pelos scripts `hyper_day.py` e `hyper_week.py`, que ajustam os modelos usando dados de um dia e uma semana, respectivamente. Esses scripts empregam a biblioteca `optuna` para encontrar a configuração ideal de hiperparâmetros que maximiza a precisão das previsões. Este processo é crucial para garantir que os modelos estejam bem ajustados às características específicas dos dados de tráfego. Por simplicidade, foram usados dois arquivos diferentes para testar dados históricos em dois cenários: o tráfego de um dia antes e de uma semana antes da data alvo da previsão de carga.
 
@@ -48,6 +29,23 @@ Após a otimização, os scripts `test_day.py` e `test_week.py` avaliam o desemp
 - **Coeficiente de Determinação (R²)**
 
 Estas métricas ajudam a quantificar o quão próximo as previsões estão dos valores reais, proporcionando uma medida clara da eficácia do modelo. Também por simplicidade, os arquivos de testes foram replicados para cada cenário.
+
+Avaliamos dois cenários de treinamento. No primeiro, os dados de tráfego das 24 horas do dia anterior ao alvo da predição foram usados para treino. No segundo cenário, os dados de tráfego de 24 horas de uma semana antes foram usados. Em geral, os resultados de testes com dados do primeiro cenário foram melhores. As figuras à seguir mostram os padrões de tráfego do dia alvo e dos dois cenários. É possível perceber que o padrão de tráfego no cenário 1 se assemelha mais ao dia previsto.
+
+<figure>
+    <img src="3-target.png" width="45%">
+    <figcaption>Dia alvo</figcaption>
+</figure>
+
+<figure>
+    <img src="1-day.png" width="45%">
+    <figcaption>Cenário 1</figcaption>
+</figure>
+
+<figure>
+    <img src="2-week.png" width="45%">
+    <figcaption>Cenário 1</figcaption>
+</figure>
 
 ## Visualização dos Resultados
 Os resultados das previsões são visualizados utilizando `matplotlib`, gerando gráficos que comparam as cargas previstas com as reais. Esta visualização facilita a identificação de discrepâncias e destaca a precisão das previsões do modelo. Exemplos de tais gráficos podem ser gerados pelos scripts de teste e são fundamentais para a análise de desempenho.
