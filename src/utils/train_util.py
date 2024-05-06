@@ -69,7 +69,7 @@ class TrainUtil:
         losses = []
         node_features, edge_indices, edge_features = DataUtils.load_data(gml_file)
         for epoch in range(epochs):
-            print(f"Progress:  {epoch/epochs*100:.2f}%",end="\r")
+            print(f"Progress:  {epoch/epochs*100:.0f}%",end="\r")
             for tm_file in traffic_matrix_files:
                 tm = path_traffic_matrix_files + tm_file
                 node_loads = DataUtils.get_node_loads(tm)
